@@ -1,4 +1,3 @@
-# HTTP Connection test
 # January 26, 2024
 
 import time
@@ -11,7 +10,6 @@ import LEDMatrix
 import time
 
 ssid = "airuc-guest"
-home_ssid = "TELUS3664"
 password = ""
 streets = {"Macleod Trail SE": 6, "Macleod Trail": 5, "Centre Street": 4, "4 Street": 3, "5 Street": 2, "8 Street": 1}
 avenues = {"4 Avenue": 5, "5 Avenue": 4, "6 Avenue": 3, "7 Avenue": 2, "8 Avenue": 1}
@@ -112,49 +110,3 @@ while True:
 
     # Check for updates every 30 seconds
     time.sleep(30)
-
-"""
-def https_get(url):
-    _, _, host, path = url.split('/', 3)
-    addr = socket.getaddrinfo(host, 443)[0][-1]
-    
-    context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
-    
-    s = socket.socket()
-    s.connect(addr)
-    secure_socket = context.wrap_socket(s, server_side=False)
-    
-    secure_socket.write(bytes('GET /%s HTTP/1.0\r\nHost: %s\r\n\r\n' % (path, host), 'utf8'))
-    while True:
-        data = secure_socket.read(1024)
-        readable_data = str(data, 'utf8')
-        if data:
-            print(readable_data, end='')
-            del data
-        else:
-            break
-    secure_socket.close()
-
-https_get("https://gis.calgary.ca/arcgis/rest/services/pub_CalgaryDotCa/Events/MapServer/1/query?where=1=1&outFields=*&returnGeometry=false&f=geojson")
-
-
-
-def http_get(url):
-    _, _, host, path = url.split('/', 3)
-    addr = socket.getaddrinfo(host, 443)[0][-1]
-    s = socket.socket()
-    s.connect(addr)
-    s.send(bytes('GET /%s HTTP/1.0\r\nHost: %s\r\n\r\n' % (path, host), 'utf8'))
-    while True:
-        data = s.recv(100)
-        readable_data = str(data, 'utf8')
-        if data:
-            #if "detours" in readable_data:
-            print(readable_data, end='')
-            del data
-        else:
-            break
-    s.close()
-    
-http_get('http://www.calgary.ca/roads/conditions/traffic.html')
-"""
